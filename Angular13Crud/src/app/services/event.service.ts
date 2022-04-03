@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-const baseUrl = 'http://localhost:8080/api/events';
+const baseUrl = 'http://project3postgresql-env.eba-s8mjfkr6.us-east-1.elasticbeanstalk.com/api/events';
 
 @Injectable({
   providedIn: 'root'

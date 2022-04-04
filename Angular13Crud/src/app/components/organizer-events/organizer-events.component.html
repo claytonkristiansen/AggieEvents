@@ -1,0 +1,38 @@
+<div class="list-row">
+  <div class="col-md-8">
+    <div class="col-md-6">
+      <h4>Your organization's events</h4>
+      <ul class="list-group">
+        <li
+          class="list-group-item"
+          *ngFor="let event of events; let i = index"
+          [class.active]="i == currentIndex"
+          (click)="setActiveEvent(event, i)"
+        >
+        {{ event.name }}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <div *ngIf="currentEvent">
+        <h4>Event</h4>
+        <div>
+          <label><strong>Event Name:</strong></label> {{ currentEvent.name }}
+        </div>
+        <div>
+          <label><strong>Description:</strong></label> {{ currentEvent.description }}
+        </div>
+        <div>
+          <label><strong>Date:</strong></label> {{ currentEvent.date }}
+        </div>
+        <a class="badge badge-warning" routerLink="/events/{{ currentEvent.id }}">
+          Modify/Remove
+        </a>
+      </div>
+      <div *ngIf="!currentEvent">
+        <br />
+        <p>Select a tutorial to Modify or Remove</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,31 @@
 .list-row {
   padding-top: 30vh;
 }
+
+div {
+  align-self: center;
+  align-content: center;
+  text-align: center;
+}
+
+ul {
+  list-style-type: none;
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  text-align: center;
+  text-indent: 0px;
+  padding-left: center;
+  margin-left: 0px;
+  padding: 0px;
+  margin: 0px;
+  line-height: 150%;
+}
+
+
+.list-group-item {
+  border: 1px solid black;
+  position:relative;
+  text-align: center;
+  width: 400px;
+}

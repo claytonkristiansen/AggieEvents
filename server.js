@@ -3,7 +3,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 var corsOptions = {
-  origin: ["http://jds7232-angular-front-end.s3-website-us-east-1.amazonaws.com","https://localhost:8081"]
+  origin: ["http://jds7232-angular-front-end.s3-website-us-east-1.amazonaws.com","http://localhost:8081"]
 };
 app.use(cors(corsOptions));
 

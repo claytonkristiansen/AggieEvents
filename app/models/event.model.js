@@ -1,4 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
+  // represents entities in database and creates the events table if it doesn't already exist
   const Event = sequelize.define("event", {
     name: {
       type: Sequelize.STRING

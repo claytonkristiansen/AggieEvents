@@ -1,3 +1,4 @@
+// credentials for the database and controls how many connections are open at once
 module.exports = {
   HOST: "database-1.c8naql3d9t4i.us-east-1.rds.amazonaws.com",
   USER: "jds7232",

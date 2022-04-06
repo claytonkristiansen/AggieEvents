@@ -1,4 +1,5 @@
 module.exports = app => {
+  // sending queries to backside pages like /api/events/approved/
   const events = require("../controllers/event.controller.js");
 
   var router = require("express").Router();

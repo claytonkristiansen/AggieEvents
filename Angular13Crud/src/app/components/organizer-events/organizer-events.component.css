@@ -6,6 +6,7 @@ div {
   align-self: center;
   align-content: center;
   text-align: center;
+  margin:auto;
 }
 
 ul {

@@ -1,7 +1,7 @@
 const db = require("../models");
 const Event = db.events;
 const Op = db.Sequelize.Op;
-// adds new event to database
+
 exports.create = (req, res) => {
   if (!req.body.name) {
     res.status(400).send({
@@ -29,7 +29,7 @@ exports.create = (req, res) => {
       });
     });
 };
-// responds with every event in the database
+
 exports.findAll = (req, res) => {
   const name = req.query.name;
   var condition = name ? {name: {[Op.eq]: name } } : null;
@@ -44,7 +44,7 @@ exports.findAll = (req, res) => {
       });
     });
 };
-// responds with the event associated with the id requested
+
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
@@ -58,7 +58,7 @@ exports.findOne = (req, res) => {
       });
     });
 };
-// modifies event with the associated id
+
 exports.modify = (req, res) => {
   const id = req.params.id;
 
@@ -82,7 +82,7 @@ exports.modify = (req, res) => {
       });
     });
 };
-// deletes event with the associated id from database
+
 exports.delete = (req, res) => {
   const id = req.params.id;
 
@@ -106,7 +106,7 @@ exports.delete = (req, res) => {
       });
     });
 };
-// deletes all events in the database
+
 exports.deleteAll = (req, res) => {
   Event.destroy({
     where: {},
@@ -122,9 +122,9 @@ exports.deleteAll = (req, res) => {
       })
     })
 };
-// responds with all APPROVED events found in the database
+
 exports.findAllApproved = (req, res) => {
-  Event.findAll({ where: { status: "APPROVED"} })
+  Events.findAll({ where: { status: "APPROVED"} })
     .then(data => {
       res.send(data);
     })

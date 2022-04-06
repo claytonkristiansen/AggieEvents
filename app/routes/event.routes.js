@@ -2,6 +2,7 @@ module.exports = app => {
   const events = require("../controllers/event.controller.js");
 
   var router = require("express").Router();
+  // these methods send the output of the queries to a certain webpage like /api/events/approved
 
   router.post("/", events.create);
 

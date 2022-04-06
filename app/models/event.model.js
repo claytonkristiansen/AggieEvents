@@ -1,4 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
+  // model of event used to query events via sequelize
   const Event = sequelize.define("event", {
     name: {
       type: Sequelize.STRING

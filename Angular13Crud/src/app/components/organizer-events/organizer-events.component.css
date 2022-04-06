@@ -23,10 +23,13 @@ ul {
   line-height: 150%;
 }
 
-
 .list-group-item {
   border: 1px solid black;
   position:relative;
   text-align: center;
   width: 400px;
+}
+
+.EventDesc {
+  border: 1px solid green;
 }

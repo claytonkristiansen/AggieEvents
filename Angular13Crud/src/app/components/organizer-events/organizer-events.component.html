@@ -10,30 +10,32 @@
             [class.active]="i == currentIndex"
             (click)="setActiveEvent(event, i)"
           >
-          {{ event.name }}>
+          {{ event.name }}
+
+            <div class="EventDesc" *ngIf="currentEvent && i == currentIndex">
+              <h4>Event</h4>
+              <div>
+                <label><strong>Event Name:</strong></label> {{ currentEvent.name }}
+              </div>
+              <div>
+                <label><strong>Description:</strong></label> {{ currentEvent.description }}
+              </div>
+              <div>
+                <label><strong>Date:</strong></label> {{ currentEvent.date }}
+              </div>
+              <a class="badge badge-warning" routerLink="/events/{{ currentEvent.id }}">
+                Modify/Remove
+              </a>
+            </div>
           </div>
+          
         </li>
       </ul>
     </div>
     <div class="col-md-6">
-      <div *ngIf="currentEvent">
-        <h4>Event</h4>
-        <div>
-          <label><strong>Event Name:</strong></label> {{ currentEvent.name }}
-        </div>
-        <div>
-          <label><strong>Description:</strong></label> {{ currentEvent.description }}
-        </div>
-        <div>
-          <label><strong>Date:</strong></label> {{ currentEvent.date }}
-        </div>
-        <a class="badge badge-warning" routerLink="/events/{{ currentEvent.id }}">
-          Modify/Remove
-        </a>
-      </div>
       <div *ngIf="!currentEvent">
         <br />
-        <p>Select a tutorial to Modify or Remove</p>
+        <p>Select an event to Modify or Remove</p>
       </div>
     </div>
   </div>

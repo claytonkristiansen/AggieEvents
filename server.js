@@ -2,8 +2,13 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
+<<<<<<< HEAD
 var corsOptions = { // only allows the AWS S3 static website and locally hosted instances of the front end to access the backend
   origin: ["http://jds7232-angular-front-end.s3-website-us-east-1.amazonaws.com","https://localhost:8081"]
+=======
+var corsOptions = {
+  origin: ["http://jds7232-angular-front-end.s3-website-us-east-1.amazonaws.com","http://localhost:8081"]
+>>>>>>> aaceca936ef12da384ff618b1b210fc9dd93b27d
 };
 app.use(cors(corsOptions));
 

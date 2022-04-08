@@ -15,4 +15,5 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.events = require("./event.model.js")(sequelize, Sequelize);
+db.organizations = require ("./organization.model.js")(sequelize, Sequelize);
 module.exports = db;

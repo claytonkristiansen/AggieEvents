@@ -20,6 +20,7 @@ app.get("/", (req, res) => {
   res.send("why are u here");
 });
 require("./app/routes/event.routes")(app);
+require("./app/routes/organization.routes")(app);
 
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {

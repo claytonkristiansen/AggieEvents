@@ -122,7 +122,7 @@ exports.deleteAll = (req, res) => {
       })
     })
 };
-// query that returns all approved APIs
+// query that returns all approved events
 exports.findAllApproved = (req, res) => {
   Event.findAll({ where: { status: "APPROVED"} })
     .then(data => {
@@ -135,3 +135,30 @@ exports.findAllApproved = (req, res) => {
       });
     });
 };
+// query that returns all pending events
+exports.findAllPending = (req, res) => {
+  Event.findAll({ where: { status: "PENDING"} })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "ERROR: couldn't get all events."
+      });
+    });
+};
+// query that returns all events from a specific organization
+exports.findAllFromOrg = (req, res) => {
+  const organizer = req.params.organizer;
+  Event.findAll({ where: {organizer: organizer} })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "ERROR: couldn't get organizers events."
+      });
+    });
+}

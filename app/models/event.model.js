@@ -7,8 +7,14 @@ module.exports = (sequelize, Sequelize) => {
     date: {
       type: Sequelize.STRING
     },
-    organizationid: {
-      type: Sequelize.INTEGER
+    time: {
+      type: Sequelize.STRING
+    },
+    location: {
+      type: Sequelize.STRING
+    },
+    organizer: {
+      type: Sequelize.STRING
     },
     description: {
       type: Sequelize.STRING

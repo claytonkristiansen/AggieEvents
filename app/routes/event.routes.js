@@ -8,7 +8,11 @@ module.exports = app => {
 
   router.get("/", events.findAll);
 
+  router.get("/:organizer", events.findAllFromOrg);
+
   router.get("/approved", events.findAllApproved);
+
+  router.get("/pending", events.findAllPending);
 
   router.get("/:id", events.findOne);
 

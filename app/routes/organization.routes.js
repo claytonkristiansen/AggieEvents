@@ -8,6 +8,8 @@ module.exports = app => {
 
   router.get("/", organizations.findAll);
 
+  router.get("/orgs/:name/:password", organizations.findLogIn);
+
   //router.get("/:id", organizations.findOne);
 
   router.get("/:name", organizations.loginVal);

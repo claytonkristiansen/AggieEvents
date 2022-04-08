@@ -138,3 +138,18 @@ exports.loginVal = (req, res) => {
       });
     });
 };
+// query that checks if a username and password match to let an organizer log in
+exports.findLogIn = (req, res) => {
+  const name = req.params.name;
+  const password = req.params.password;
+  Organization.findAll({ where: { name: name, password: password } })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "ERROR: organization doesn't exist or credentials are invalid."
+      });
+    });
+};

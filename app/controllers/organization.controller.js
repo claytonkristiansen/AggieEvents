@@ -28,7 +28,7 @@ exports.create = (req, res) => {
     });
 };
 // query that responds the whole organizations table
-/*
+
 exports.findAll = (req, res) => {
   const name = req.query.name;
   var condition = name ? {name: {[Op.eq]: name } } : null;
@@ -43,8 +43,9 @@ exports.findAll = (req, res) => {
       });
     });
 };
-*/
+
 // query that responds the organization associated with id
+/*
 exports.findOne = (req, res) => {
   const id = req.params.id;
 
@@ -58,6 +59,7 @@ exports.findOne = (req, res) => {
       });
     });
 };
+*/
 // query that updates Organization associated with id
 exports.modify = (req, res) => {
   const id = req.params.id;
@@ -124,9 +126,8 @@ exports.deleteAll = (req, res) => {
 };
 // query that checks if a set of credentials is invalid
 exports.loginVal = (req, res) => {
-  const name = req.query.name;
-  const password = req.query.password;
-  Organization.findAll({ where: {name: name, password: password} })
+  const name = req.params.name;
+  Organization.findAll({ where: { name: name } })
     .then(data => {
       res.send(data);
     })

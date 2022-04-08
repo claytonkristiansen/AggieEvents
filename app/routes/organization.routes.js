@@ -6,11 +6,11 @@ module.exports = app => {
 
   router.post("/", organizations.create);
 
-  //router.get("/", organizations.findAll);
+  router.get("/", organizations.findAll);
 
-  router.get("/:id", organizations.findOne);
+  //router.get("/:id", organizations.findOne);
 
-  router.get("/loginVal/", organizations.loginVal);
+  router.get("/:name", organizations.loginVal);
 
   router.put("/:id", organizations.modify);
 

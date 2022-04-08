@@ -8,7 +8,7 @@ module.exports = app => {
 
   router.get("/", events.findAll);
 
-  router.get("/:organizer", events.findAllFromOrg);
+  //router.get("/:organizer", events.findAllFromOrg);
 
   router.get("/approved", events.findAllApproved);
 

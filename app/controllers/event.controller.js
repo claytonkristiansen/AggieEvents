@@ -149,6 +149,7 @@ exports.findAllPending = (req, res) => {
     });
 };
 // query that returns all events from a specific organization
+/*
 exports.findAllFromOrg = (req, res) => {
   const organizer = req.params.organizer;
   Event.findAll({ where: {organizer: organizer} })
@@ -162,3 +163,4 @@ exports.findAllFromOrg = (req, res) => {
       });
     });
 }
+*/

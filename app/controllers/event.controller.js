@@ -13,7 +13,7 @@ exports.create = (req, res) => {
   const event = {
     name: req.body.name,
     date: req.body.date,
-    organizationid: req.body.organizationid,
+    organizer: req.body.organizer,
     time: req.body.time,
     location: req.body.location,
     description: req.body.description,

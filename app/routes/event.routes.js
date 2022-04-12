@@ -10,6 +10,8 @@ module.exports = app => {
 
   router.get("/orgs/:organizer", events.findAllFromOrg);
 
+  router.get("/orgs/:organizer/shown", events.findAllShowingFromOrg);
+
   router.get("/approved", events.findAllApproved);
 
   router.get("/pending", events.findAllPending);

@@ -21,6 +21,19 @@ module.exports = (sequelize, Sequelize) => {
     },
     status: {
       type: Sequelize.STRING
+    },
+    message: {
+      type: Sequelize.STRING
+    },
+    show: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
+    },
+    roster: {
+      type: Sequelize.ARRAY(Sequelize.STRING)
+    },
+    category: {
+      type: Sequelize.STRING
     }
   });
   return Event;

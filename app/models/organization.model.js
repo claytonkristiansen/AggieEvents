@@ -9,6 +9,9 @@ module.exports = (sequelize, Sequelize) => {
     },
     category: {
       type: Sequelize.STRING
+    },
+    reqCategory: {
+      type: Sequelize.STRING
     }
   });
   return Organization;

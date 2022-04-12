@@ -17,7 +17,11 @@ exports.create = (req, res) => {
     time: req.body.time,
     location: req.body.location,
     description: req.body.description,
-    status: req.body.status
+    status: req.body.status,
+    message: req.body.message,
+    show: req.body.show,
+    roster: req.body.roster,
+    category: req.body.category
   }
 
   Event.create(event)
@@ -162,6 +166,20 @@ exports.findAllFromOrg = (req, res) => {
       res.status(500).send({
         message:
           err.message || "ERROR: couldn't get organizers events."
+      });
+    });
+}
+// query that returns all events that should be shown in the organizer's notification log
+exports.findAllShowingFromOrg = (req, res) => {
+  const organizer = req.params.organizer;
+  Event.findAll({ where: {organizer: organizer, show: "true"} })
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "ERROR: couldn't get organizers shown events."
       });
     });
 }

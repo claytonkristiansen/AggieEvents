@@ -13,7 +13,8 @@ exports.create = (req, res) => {
   const organization = {
     name: req.body.name,
     password: req.body.password,
-    category: req.body.category
+    category: req.body.category,
+    reqCategory: req.body.reqCategory
   }
 
   Organization.create(organization)

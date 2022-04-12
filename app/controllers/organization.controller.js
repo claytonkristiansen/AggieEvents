@@ -154,3 +154,16 @@ exports.findLogIn = (req, res) => {
       });
     });
 };
+// query that returns all organizations who want to change their reqCategory
+exports.findAllCatChange = (req, res) => {
+  Organization.findAll({ where: {changeCat: "true"}})
+    .then(data => {
+      res.send(data);
+    })
+    .catch(err => {
+      res.status(500).send({
+        message:
+          err.message || "ERROR: couldn't get organizations."
+      });
+    });
+}

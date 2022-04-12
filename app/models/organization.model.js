@@ -12,6 +12,10 @@ module.exports = (sequelize, Sequelize) => {
     },
     reqCategory: {
       type: Sequelize.STRING
+    },
+    changeCat: {
+      type: Sequelize.BOOLEAN,
+      defaultValue: false
     }
   });
   return Organization;

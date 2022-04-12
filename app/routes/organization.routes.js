@@ -10,6 +10,8 @@ module.exports = app => {
 
   router.get("/orgs/:name/:password", organizations.findLogIn);
 
+  router.get("/catChange", organizations.findAllCatChange);
+
   //router.get("/:id", organizations.findOne);
 
   router.get("/:name", organizations.loginVal);

@@ -141,7 +141,7 @@ exports.findAllApproved = (req, res) => {
   const endDate = req.query.endDate;
   var approved = {status: "APPROVED"};
   var nameCond = name.length >= 1 ? {name: {[Op.like]: name} } : null;
-  var locationCond = locationCond.length >= 1 ? {location: {[Op.eq]: location} } : null;
+  var locationCond = location.length >= 1 ? {location: {[Op.eq]: location} } : null;
   var orgCond = organizer.length >= 1 ? {organizer: {[Op.eq]: organizer} }: null;
   var catCond = category.length >= 1 ? {category: {[Op.eq]: category} }: null;
   console.log(nameCond);

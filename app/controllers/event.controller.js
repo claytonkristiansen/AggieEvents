@@ -140,12 +140,12 @@ exports.findAllApproved = (req, res) => {
   const startDate = req.query.startDate;
   const endDate = req.query.endDate;
   var approved = {status: "APPROVED"};
-  var nameCond = name.length >= 1 ? {name: {[Op.like]: name} } : null;
-  var locationCond = location.length >= 1 ? {location: {[Op.eq]: location} } : null;
-  var orgCond = organizer.length >= 1 ? {organizer: {[Op.eq]: organizer} }: null;
-  var catCond = category.length >= 1 ? {category: {[Op.eq]: category} }: null;
+  var nameCond = name !== 'null' ? {name: {[Op.like]: name} } : null;
+  var locationCond = location.length !== 'null' ? {location: {[Op.eq]: location} } : null;
+  var orgCond = organizer.length !== 'null' ? {organizer: {[Op.eq]: organizer} }: null;
+  var catCond = category.length !== 'null' ? {category: {[Op.eq]: category} }: null;
   console.log(nameCond);
-  var dateCond = (startDate.length >= 1 && endDate.length >= 1) ? {date: {[Op.between]: [startDate, endDate]} }: null;
+  var dateCond = (startDate.length !== 'null' && endDate.length !== 'null') ? {date: {[Op.between]: [startDate, endDate]} }: null;
   Event.findAll({ where: {[Op.and]: [approved, nameCond, locationCond, orgCond, catCond, dateCond]}
                            } )
     .then(data => {

@@ -132,23 +132,22 @@ exports.deleteAll = (req, res) => {
 exports.findAllApproved = (req, res) => {
 
   const name = req.query.name;
+  console.log(name.length);
+  console.log(name.length >= 1);
   const location = req.query.location;
   const organizer = req.query.organizer;
   const category = req.query.category;
   const startDate = req.query.startDate;
   const endDate = req.query.endDate;
   var approved = {status: "APPROVED"};
-  var nameCond = name ? {name: {[Op.like]: name} }: null;
-  var locationCond = location ? {location: {[Op.eq]: location} }: null;
-  var orgCond = organizer ? {organizer: {[Op.eq]: organizer} }: null;
-  var catCond = category ? {category: {[Op.eq]: category} }: null;
-  var dateCond = (startDate && endDate) ? {date: {[Op.between]: [startDate, endDate]} }: null;
-  Event.findAll({ where:   approved,
-                           nameCond,
-                           locationCond,
-                           orgCond,
-                           catCond,
-                           dateCond} )
+  var nameCond = name.length >= 1 ? {name: {[Op.like]: name} } : null;
+  var locationCond = locationCond.length >= 1 ? {location: {[Op.eq]: location} } : null;
+  var orgCond = organizer.length >= 1 ? {organizer: {[Op.eq]: organizer} }: null;
+  var catCond = category.length >= 1 ? {category: {[Op.eq]: category} }: null;
+  console.log(nameCond);
+  var dateCond = (startDate.length >= 1 && endDate.length >= 1) ? {date: {[Op.between]: [startDate, endDate]} }: null;
+  Event.findAll({ where: {[Op.and]: [approved, nameCond, locationCond, orgCond, catCont, dateCond]}
+                           } )
     .then(data => {
       res.send(data);
     })

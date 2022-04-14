@@ -128,9 +128,27 @@ exports.deleteAll = (req, res) => {
       })
     })
 };
-// query that returns all approved events
+// query that returns all approved events with the given filters
 exports.findAllApproved = (req, res) => {
-  Event.findAll({ where: { status: "APPROVED"} })
+
+  const name = req.query.name;
+  const location = req.query.location;
+  const organizer = req.query.organizer;
+  const category = req.query.category;
+  const startDate = req.query.startDate;
+  const endDate = req.query.endDate;
+  var approved = {status: "APPROVED"};
+  var nameCond = name ? {name: {[Op.like]: name} }: null;
+  var locationCond = location ? {location: {[Op.eq]: location} }: null;
+  var orgCond = organizer ? {organizer: {[Op.eq]: organizer} }: null;
+  var catCond = category ? {category: {[Op.eq]: category} }: null;
+  var dateCond = (startDate && endDate) ? {date: {[Op.between]: [startDate, endDate]} }: null;
+  Event.findAll({ where:   approved,
+                           nameCond,
+                           locationCond,
+                           orgCond,
+                           catCond,
+                           dateCond} )
     .then(data => {
       res.send(data);
     })

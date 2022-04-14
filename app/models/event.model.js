@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.STRING
     },
     date: {
-      type: Sequelize.STRING
+      type: Sequelize.DATE
     },
     time: {
       type: Sequelize.STRING

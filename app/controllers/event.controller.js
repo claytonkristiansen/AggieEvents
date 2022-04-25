@@ -88,6 +88,30 @@ exports.modify = (req, res) => {
       });
     });
 };
+// the same as modify but only used for manager approve
+exports.approve = (req, res) => {
+  const id = req.params.id;
+
+  Event.update(req.body, {
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({
+          message: "Event has been modified"
+        });
+      } else {
+        res.send({
+          message: "ERROR: event was not found."
+        });
+      }
+    })
+    .catch(err => {
+      res.status(500).send({
+        message: "ERROR: couldn't update event with id " + id
+      });
+    });
+};
 // query that removed event associated with id
 exports.delete = (req, res) => {
   const id = req.params.id;

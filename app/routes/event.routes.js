@@ -18,7 +18,9 @@ module.exports = app => {
 
   router.get("/:id", events.findOne);
 
-  router.put("/:id", events.modify)
+  router.put("/:id", events.modify);
+
+  router.put("/approve/:id", events.approve);
 
   router.delete("/:id", events.delete);
 

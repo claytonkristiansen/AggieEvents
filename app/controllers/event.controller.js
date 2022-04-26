@@ -1,6 +1,10 @@
 const db = require("../models");
 const Event = db.events;
 const Op = db.Sequelize.Op;
+var aws     = require('aws-sdk');
+var email   = "jonasstites@gmail.com";
+aws.config.loadFromPath(__dirname + '/config.json');
+var ses = new aws.SES();
 // query that creates new event
 exports.create = (req, res) => {
   if (!req.body.name) {
@@ -50,6 +54,44 @@ exports.findAll = (req, res) => {
       });
     });
 };
+
+exports.emails = (req, res) => {
+  Event.findAll()
+    .then(data => {
+
+      for (var index in data) {
+        if (data[index].dataValues.roster.length > 0) {
+          for (var j in data[index].dataValues.roster) {
+            var ses_mail = "From: 'AggieEvents' <" + email + ">\n";
+            ses_mail = ses_mail + "To: " + data[index].dataValues.roster[j] + "\n";
+            ses_mail = ses_mail + "Subject: " + data[index].dataValues.name + "\n";
+            ses_mail = ses_mail + "MIME-Version: 1.0\n";
+            ses_mail = ses_mail + "Content-Type: multipart/mixed; boundary=\"NextPart\"\n\n";
+            ses_mail = ses_mail + "--NextPart\n";
+            ses_mail = ses_mail + "Content-Type: text/html; charset=us-ascii\n\n";
+            ses_mail = ses_mail + "REMINDER: " + data[index].dataValues.description + " at " + data[index].dataValues.location + ".\n\n";
+            ses_mail = ses_mail + "--NextPart\n"; /*
+            var params = {
+              RawMessage: { Data: new Buffer.from(ses_mail) },
+              Destinations: [data[index].dataValues.roster[j]],
+              Source: "'AggieEvents' <" + email + ">'"
+            };
+            console.log(params);
+            ses.sendRawEmail(params, function(err, data) {
+                if(err) {
+                  console.log(err);
+                }
+                else {
+                  console.log(data);
+                }
+            });
+          }
+        }
+      }
+    res.send(data);
+    });
+};
+
 // query that responds the event associated with id
 exports.findOne = (req, res) => {
   const id = req.params.id;
@@ -98,6 +140,7 @@ exports.approve = (req, res) => {
     .then(num => {
       if (num == 1) {
         res.send({
+          //TWITTER
           message: "Event has been modified"
         });
       } else {

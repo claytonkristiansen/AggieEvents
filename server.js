@@ -19,10 +19,11 @@ db.sequelize.sync();
 app.get("/", (req, res) => {
   res.send("why are u here");
 });
+
 require("./app/routes/event.routes")(app);
 require("./app/routes/organization.routes")(app);
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8082;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
